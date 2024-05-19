@@ -23,7 +23,7 @@ ynh_script_progression --message="Setting up source files..." --weight=1
 # Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir"
 
-chown -R "$app:www-data" "$install_dir"
+chown -R "nextcloud:www-data" "$install_dir"
 
 #=================================================
 # INSTALL BORGWARHOUSE
@@ -32,7 +32,7 @@ ynh_script_progression --message="Installing $app..." --weight=10
 
 pushd "$install_dir"
  	ynh_use_nodejs
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH $ynh_npm install
+	ynh_exec_warn_less sudo -u nextcloud env $ynh_node_load_PATH $ynh_npm install
 popd
 
 # Create a dedicated NGINX config using the conf/nginx.conf template
